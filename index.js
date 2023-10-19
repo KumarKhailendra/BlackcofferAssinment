@@ -8,7 +8,7 @@ const app = express();
 dotenv.config();
 connectDB();
 const corsOptions = {
-    origin: "http://localhost:3000"
+    origin: process.env.URL
 }
 app.use(express.json());
 app.use(cors(corsOptions));

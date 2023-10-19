@@ -72,7 +72,7 @@ function App() {
 
 
       try {
-        let data = await fetch(`http://localhost:8080/api/?added=${addYearfilter}&sector=${sectorfilter}&end_year=${endYearFilter}&topic=${topicFilter}&region=${regionFilter}&start_year=${startYearFilter}&published=${publishedYearFilter}&country=${countryFilter}&pestle=${pestleFilter}&source=${sourceFilter}`).then((res)=>res.json())
+        let data = await fetch(`https://blackcoffer-8exc.onrender.com/api/?added=${addYearfilter}&sector=${sectorfilter}&end_year=${endYearFilter}&topic=${topicFilter}&region=${regionFilter}&start_year=${startYearFilter}&published=${publishedYearFilter}&country=${countryFilter}&pestle=${pestleFilter}&source=${sourceFilter}`).then((res)=>res.json())
         // filter field data
         setAddedData(data.Added)
         setSectorData(data.Sector)
@@ -98,7 +98,7 @@ function App() {
         setCountryContribute(data.countryContribute)
         setRegionContribute(data.regionContribute)
         console.log(data.length);
-        console.log(`http://localhost:8080/api/?added=${addYearfilter}&sector=${sectorfilter}&end_year=${endYearFilter}&topic=${topicFilter}&region=${regionFilter}&start_year=${startYearFilter}&published=${publishedYearFilter}&country=${countryFilter}&pestle=${pestleFilter}&source=${sourceFilter}`);
+        console.log(`https://blackcoffer-8exc.onrender.com/api/?added=${addYearfilter}&sector=${sectorfilter}&end_year=${endYearFilter}&topic=${topicFilter}&region=${regionFilter}&start_year=${startYearFilter}&published=${publishedYearFilter}&country=${countryFilter}&pestle=${pestleFilter}&source=${sourceFilter}`);
     
 
 

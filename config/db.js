@@ -9,9 +9,8 @@ function connectDB(){
     socketTimeoutMS: 60000,
   };
   
-  // const mongoURL = process.env.MONGODB_URL;
+  const mongoURL = process.env.MONGODB_URL;
   // const mongoURL = "mongodb://0.0.0.0:27017/coffee";
-  const mongoURL = "mongodb+srv://Blackcoffer:Blackcoffer@cluster0.knh9cmk.mongodb.net/?retryWrites=true&w=majority";
   
   mongoose.connect(mongoURL, options) 
     .then(() => {

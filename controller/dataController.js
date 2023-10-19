@@ -65,20 +65,21 @@ const getAllData = asyncHandler(async (req, res) => {
     res.send({
         length: CompanyDatas.length,
         Added: datefield(Data, "added"),
-        Sector: unicfield(Data, "sector"),
-        End_year: unicfield(Data, "end_year"),
-        Topic: unicfield(Data, "topic"),
-        Region: unicfield(Data, "region"),
-        Start_year: unicfield(Data, "start_year"),
+        Sector: filterOption(Data, "sector"),
+        End_year: filterOption(Data, "end_year"),
+        Topic: filterOption(Data, "topic"),
+        Region: filterOption(Data, "region"),
+        Start_year: filterOption(Data, "start_year"),
         Published: datefield(Data, "published"),
-        Country: unicfield(Data, "country"),
-        Source: unicfield(Data, "source"),
+        Country: filterOption(Data, "country"),
+        Pestle: filterOption(Data, "pestle"),
+        Source: filterOption(Data, "source"),
         totalLikelihood: fieldTotal(CompanyDatas, "likelihood"),
         totalIntensity: fieldTotal(CompanyDatas, "intensity"),
         totalRelevance: fieldTotal(CompanyDatas, "relevance"),
-        totalcCountry: unicfield(CompanyDatas, "country").length,
-        totalcRegion: unicfield(CompanyDatas, "region").length,
-        totalcTopic: unicfield(CompanyDatas, "topic").length,
+        totalCountry: unicfield(CompanyDatas, "country").length,
+        totalRegion: unicfield(CompanyDatas, "region").length,
+        totalTopic: unicfield(CompanyDatas, "topic").length,
         IntensitySector: fieldAnalysis(CompanyDatas, "intensity", "sector"),
         likelihoodSector: fieldAnalysis(CompanyDatas, "likelihood", "sector"),
         topicRepited: repitedField(CompanyDatas, "topic"),
@@ -93,6 +94,15 @@ const contribution = (data, pv) =>{
     arr.map((d)=> {total = total + d.value});
     arr.map((d)=>{
         d["percentage"] = d.value*100/total
+    })
+    return arr
+}
+
+const filterOption = (data, pv) =>{
+    let ud = unicfield(data, pv)
+    let arr = []
+    ud.map((d,i)=>{
+        arr[i] = {value: d, label: d}
     })
     return arr
 }
@@ -125,6 +135,7 @@ const unicfield = (data, pv) => {
 }
 const datefield = (data, pv) => {
     let arr = []
+    let newArr = []
     data.map((d)=>{
         let year = moment(d[pv], "MMMM, DD YYYY HH:mm:ss").format('YYYY')
         const arrHasValue= arr.some((i) => {
@@ -136,7 +147,10 @@ const datefield = (data, pv) => {
         }
     })
   arr = arr.sort()
-  return arr;
+    arr.map((d,i)=>{
+        newArr[i] = {value: d, label: d}
+    })
+  return newArr;
 }
 
 const fieldTotal = (data, pv) => {

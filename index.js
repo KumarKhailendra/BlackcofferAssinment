@@ -8,7 +8,7 @@ const app = express();
 dotenv.config();
 connectDB();
 const corsOptions = {
-    origin: "https://blackcoffer-assinment.vercel.app/",
+    origin: "https://blackcoffer-assinment.vercel.app",
     methods: ["POST", "GET"],
     Credentials: true,
     optionSuccessStatus:200

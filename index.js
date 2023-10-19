@@ -8,7 +8,9 @@ const app = express();
 dotenv.config();
 connectDB();
 const corsOptions = {
-    origin: process.env.URL
+    origin: [process.env.URL],
+    methods: ["POST", "GET"],
+    Credentials: true
 }
 app.use(express.json());
 app.use(cors(corsOptions));

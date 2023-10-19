@@ -39,11 +39,7 @@ export const BarItem = (props) => {
         rx={1}
       />
       <animated.text
-        x={springProps.barWidth?.to((width) => {
-
-          console.log("width",width)
-          return 240
-          })}
+        x={springProps.barWidth?.to(240)}
         y={springProps.y?.to((y) => y + barHeight / 2)}
         textAnchor="end"
         alignmentBaseline="central"

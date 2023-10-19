@@ -97,12 +97,8 @@ function App() {
         setTopicRepited(data.topicRepited)
         setCountryContribute(data.countryContribute)
         setRegionContribute(data.regionContribute)
-        console.log(data.length);
-        console.log(`https://blackcoffer-assinment-api.vercel.app/api/?added=${addYearfilter}&sector=${sectorfilter}&end_year=${endYearFilter}&topic=${topicFilter}&region=${regionFilter}&start_year=${startYearFilter}&published=${publishedYearFilter}&country=${countryFilter}&pestle=${pestleFilter}&source=${sourceFilter}`);
-    
-
-
-
+        // console.log(data.length);
+        
         setFilterState(prevState=>({
           ...prevState,
           isLoading:false,
